@@ -1,0 +1,103 @@
+<!doctype html>
+<html ng-app>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href="css/main.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title>Flavorwocky</title>
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-32833228-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <div class="row header">
+        <div class="col-md-2">
+            <h1><a href="index.html"><img src="images/logo.png"/></a></h1>
+        </div>
+        <div class="col-md-8 text-center search">
+        </div>
+        <div class="col-md-1 navlinks">
+            <a href="about.html">About</a>
+        </div>
+        <div class="col-md-1 navlinks">
+            <a href="help.html">Help</a>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 25px;">
+        <div class="col-md-12">
+            <h2>About Flavorwocky</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            This application models ingredient pairs or flavor affinities and was my entry for the <a
+                href="http://blog.neo4j.org/2012/03/neo4j-heroku-challenge-winner-and.html" target="_blank">Neo4j Heroku
+            Challenge</a>.
+            <br/><br/>
+            Why <i>Flavorwocky</i>? Well, I said "what should I call the app?", and my husband said "<a
+                href="http://en.wikipedia.org/wiki/Jabberwocky">jabberwocky</a>". It couldn't be called Jabberwocky of
+            course,
+            so behold- Flavorwocky.
+            <br/><br/>
+            The <a href="https://github.com/luanne/flavorwocky/" target="_blank">first version</a> used Grails 2.0 and
+            the Neo4j add-on for Heroku to provide a basic template for anyone who wants to get up and running with
+            Grails and Neo4j on Heroku.
+            The neat visualization is thanks to the <a href="http://mbostock.github.com/d3/" target="_blank">D3.js</a>
+            library.
+            <br/>
+            Now in it's <a href="https://github.com/luanne/flavorwocky/tree/sdn">second version</a>, Flavorwocky is
+            built using Spring Data Neo4j 4.
+            <br/><br/>
+            A graph is a good fit for this domain, so, using Neo4j, we model the way ingredients in a great dish pair
+            together
+            based on their flavor affinity.<br/>
+            The current version of this app captures flavor pairings and how well ingredients pair together, and then
+            allows one to search by ingredient and view complementary combinations. Needless to say, this just scratches
+            the
+            surface of the possible features for an app like this.
+            <br/><br/>
+
+            Further reading:
+            <br/><a href="https://www.airpair.com/neo4j/posts/the-essence-of-spring-data-neo4j-4">The essence of Spring
+            Data Neo4j 4</a><br/>
+            <br/><a href="http://thought-bytes.blogspot.in/2012/02/flavor-of-month-neo4j-add-on-for-heroku.html">Flavor
+            of the
+            month- Neo4j add-on for Heroku</a><br/>
+            <a href="http://thought-bytes.blogspot.in/2012/02/flavor-of-month-neo4j-and-heroku-part-2.html">Flavor of
+                the month-
+                Neo4j add-on for Heroku, part 2</a>
+            <br/> <br/>
+
+            <br/>
+            -Luanne Misquitta
+
+        </div>
+
+    </div>
+
+</div>
+<ng-include src="'footer.html'"></ng-include>
+
+</body>
+</html>

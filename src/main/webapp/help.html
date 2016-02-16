@@ -1,0 +1,73 @@
+<!doctype html>
+<html ng-app>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href="css/main.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title>Flavorwocky</title>
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-32833228-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row header">
+        <div class="col-md-2">
+            <h1><a href="index.html"><img src="images/logo.png"/></a></h1>
+        </div>
+        <div class="col-md-8 text-center search">
+        </div>
+        <div class="col-md-1 navlinks">
+            <a href="about.html">About</a>
+        </div>
+        <div class="col-md-1 navlinks">
+            <a href="help.html">Help</a>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 25px;">
+        <div class="col-md-12">
+            <h2>Help</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            To start, try searching for an ingredient. If it's in the database, you will be rewarded with a
+            visualization of ingredients that pair well with it.<br/><br/>
+            The flavor affinity for a pair of ingredients is represented by the length of the connector between them-
+            the shorter the connector, the better their flavors go together! <br/><br/>
+            Ingredients are color coded- the color is a way of grouping ingredients from the same category together i.e.
+            Vegetables or Fish
+
+            <br/><br/>
+
+            Go ahead and add a flavor pairing by clicking on Add a Pairing, type in your ingredients, pick the
+            categories
+            they belong to, and specify how well they pair.
+            <br/><br/>
+            Have fun!
+        </div>
+
+    </div>
+
+</div>
+<ng-include src="'footer.html'"></ng-include>
+</body>
+</html>

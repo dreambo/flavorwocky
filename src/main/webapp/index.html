@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html ng-app="flavors">
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="css/main.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title>Flavorwocky</title>
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-32833228-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+
+
+
+    </script>
+</head>
+<body>
+
+<!-- modal Add Pairing -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content" ng-controller="PairingController as pairingController">
+            <form id="addForm" name="addForm" role="form" class="form-horizontal css-form" novalidate>
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span
+                            class="sr-only">Close</span></button>
+                    <h4 class="modal-title">Add Pairing</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-1">&nbsp;</div>
+                            <div class="col-md-5">
+                                <label for="ingredient1">Ingredient</label>
+                                <input type="text" class="form-control" id="ingredient1"
+                                       placeholder="First Ingredient"
+                                       ng-model="pairingController.pairing.ingredient1"
+                                       typeahead="ing for ing in pairingController.ingredientNames | filter:$viewValue "
+                                       required>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="category1">Category</label>
+                                <select class="form-control" name="category1" id="category1"
+                                        ng-model="pairingController.pairing.category1">
+                                    <option ng-repeat="cat in pairingController.categories">{{cat.name}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-1">&nbsp;</div>
+                        </div>
+                        <div class="row row-centered addPairing">
+                            <div class="col-md-12 col-centered">
+                                <div id="pairsWithLabel"><label>pairs with</label></div>
+                            </div>
+                        </div>
+                        <div class="row addPairing">
+                            <div class="col-md-1">&nbsp;</div>
+                            <div class="col-md-5">
+                                <input type="text" class="form-control" id="ingredient2" placeholder="Second Ingredient"
+                                       ng-model="pairingController.pairing.ingredient2"
+                                       typeahead="ing for ing in pairingController.ingredientNames | filter:$viewValue "
+                                       required>
+                            </div>
+                            <div class="col-md-5">
+                                <select class="form-control" name="category2"
+                                        ng-model="pairingController.pairing.category2">
+                                    <option ng-repeat="cat in pairingController.categories">{{cat.name}}</option>
+                            </select>
+                            </div>
+                            <div class="col-md-1">&nbsp;</div>
+                        </div>
+                    </div>
+                    <div class="row row-centered addPairing">
+                        <div id="affinityLabel" class="col-md-12 col-centered">
+                            <label>and the combination is</label>
+                        </div>
+                    </div>
+                    <div class="row addPairing">
+                        <div class="form-group">
+                            <div class="col-md-3">&nbsp;</div>
+                            <div class="col-md-6">
+                                <select class="form-control" ng-model="pairingController.pairing.affinity">
+                                    <option value="TRIED_TESTED" selected>Tried and tested</option>
+                                    <option value="EXCELLENT">Excellent</option>
+                                    <option value="GOOD">Good</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" ng-disabled="addForm.$invalid"
+                            ng-click="pairingController.addPairing(pairing)">Add
+                    </button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+
+<!-- End of modal Add Pairing -->
+
+
+<div class="container-fluid">
+    <div class="row header">
+        <div class="col-md-2">
+            <h1><a href="index.html"><img src="images/logo.png"/></a></h1>
+        </div>
+        <div class="col-md-8 text-center search">
+            <form role="form" class="form-horizontal">
+                <div class="form-group" ng-controller="SearchController as searchController">
+                    <label for="search" class="col-sm-5 control-label">Find foods that pair well with <br/>
+                        <small style="font-weight: normal">e.g. Chicken, Coriander, Mustard, Onion</small>
+                    </label>
+
+                    <div class="col-sm-4">
+                        <!-- <input type="text" class="form-control" id="search" placeholder="Ingredient" ng-model="searchController.ingredient">-->
+                        <!-- <input type="text" class="form-control" id="search" placeholder="Ingredient" ng-model="searchController.ingredient">-->
+                        <input type="text" id="search" ng-model="searchController.ingredient"
+                               typeahead="ing for ing in searchController.ingredients | filter:$viewValue "
+                               typeahead-on-select="searchController.search($item, $model, $label)"
+                               class="form-control">
+                    </div>
+                    <label for="add" class="col-sm-1 control-label">Or </label>
+
+                    <div class="col-sm-2">
+                        <button id="add" type="button" class="btn btn-default" data-toggle="modal"
+                                data-target="#myModal">Add a Pairing
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-1 navlinks">
+            <a href="about.html">About</a>
+        </div>
+        <div class="col-md-1 navlinks">
+            <a href="help.html">Help</a>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 25px;">
+
+    </div>
+    <div class="row">
+        <div class="col-md-8" id="chart"></div>
+
+        <div class="col-md-4">
+            <div class="panel panel-default" ng-controller="TrioController as trioController">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Flavor Trios</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-unstyled">
+                        <li ng-repeat="trio in trioController.trios">{{trio}}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default" ng-controller="FreshAdditionsController as freshController">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Fresh additions</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-unstyled">
+                        <li ng-repeat="addition in freshController.additions">
+                            <a href="" ng-click="loadLatestPairing(addition.ingredient1)">{{addition.ingredient1}}
+                                and {{addition.ingredient2}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<ng-include src="'footer.html'"></ng-include>
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+<script type="text/javascript" src="js/viz.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/ui-bootstrap-tpls-0.11.0.min.js"></script>
+<!--<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js.map"></script>-->
+<!--<script src="js/typeahead.js"></script>-->
+
+</body>
+</html>
